@@ -1,5 +1,5 @@
 print('Welcome to the ACSL Contest 1 Calculator!\nPlease type the letter of which function you would like to use.\
-    \nA)Decimal to Binary\nB)Decimal to Octal\nC)Decimal to Hexadecimal\nD)Decimal to Custom Base\nE)Other base to Decimal')
+    \nA)Decimal to Binary\nB)Decimal to Octal\nC)Decimal to Hexadecimal\nD)Decimal to Custom Base\nE)Other bases to Decimal')
 calc_choice = (input('Choose: ')).split('Choose: ')[0]
 print(f'You have chosen letter {calc_choice.upper()}')
 if calc_choice.upper() not in ['D', 'E']:

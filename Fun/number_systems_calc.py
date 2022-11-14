@@ -46,12 +46,12 @@ elif calc_choice.upper() == 'E':
 def decimal_to_other(decimal, base, length):
     decimal_copy = float(decimal)
     if float(decimal)%1 == 0:
-        return int_dec_to_other(decimal, base)
+        return int_value(decimal, base)
     else:
         decimal_copy = (str(decimal)).split('.')
         # print(decimal_copy)
-        integer = int_dec_to_other(int(decimal_copy[0]), base, False)
-        floating_point = float_dec_to_other(int(decimal_copy[1]), base, length)
+        integer = int_value(int(decimal_copy[0]), base, False)
+        floating_point = float_value(int(decimal_copy[1]), base, length)
         # print(f'{integer}, {floating_point}')
 
         if base == 2:
@@ -63,7 +63,7 @@ def decimal_to_other(decimal, base, length):
         else:
             return f'{str(integer)}.{str(floating_point)}'
 
-def int_dec_to_other(decimal, base, integer = True):
+def int_value(decimal, base, integer = True):
     answer=[]
     answer_str=''
     counter = 0
@@ -106,7 +106,7 @@ def int_dec_to_other(decimal, base, integer = True):
             else:
                 return int(answer_str)
 
-def float_dec_to_other(decimal, base, length):
+def float_value(decimal, base, length):
     answer=[]
     answer_str=''
     letters = ['A', 'B', 'C', 'D', 'E', 'F']

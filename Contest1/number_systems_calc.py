@@ -8,6 +8,13 @@ print(f'You have chosen letter {calc_choice.upper()}')
 if calc_choice.upper() not in ['D', 'E'] and calc_choice.upper() in ['A', 'B', 'C']:
     decimal = (input('Input your decimal number: ')).split('Input your decimal number: ')[0]
     try:
+        int(decimal)
+    except ValueError:
+        print('How many values after the decimal point should we calculate to? ')
+        decimal_length = (int((input('Decimal places: ')).split('Decimal places: ')[0]))-1
+    else:
+        decimal_length = 5
+    try:
         decimal = int(decimal)
     except ValueError:
         decimal = str(decimal)
@@ -16,7 +23,7 @@ if calc_choice.upper() not in ['D', 'E'] and calc_choice.upper() in ['A', 'B', '
 elif calc_choice.upper() == 'D':
     print('WARNING: This calculator does not work with custom bases greater than 9 or less than 1')
     base = int((input('Base: ')).split('Base: ')[0])
-    decimal = int((input('Input your decimal number: ')).split('Input your decimal number: ')[0])
+    decimal = float((input('Input your decimal number: ')).split('Input your decimal number: ')[0])
     calc_choice2 = None
 
 elif calc_choice.upper() == 'E':
@@ -36,17 +43,25 @@ elif calc_choice.upper() == 'E':
         base2 = int((input('Base: ')).split('Base: ')[0])
         base_value = int((input(f'Input your Base {base2} number: ')).split(f'Input your Base {base2} number: ')[0])
 
-def decimal_to_other(decimal, base, length = 6):
+def decimal_to_other(decimal, base, length):
     decimal_copy = float(decimal)
     if float(decimal)%1 == 0:
         return int_dec_to_other(decimal, base)
     else:
         decimal_copy = (str(decimal)).split('.')
-        print(decimal_copy)
+        # print(decimal_copy)
         integer = int_dec_to_other(int(decimal_copy[0]), base, False)
         floating_point = float_dec_to_other(int(decimal_copy[1]), base, length)
-        print(f'{integer}, {floating_point}')
-        return f'{str(integer)}.{str(floating_point)}'
+        # print(f'{integer}, {floating_point}')
+
+        if base == 2:
+            return f'{str(integer)}.{str(floating_point)}\u2082'
+        elif base == 8:
+            return f'{str(integer)}.{str(floating_point)}\u2088'
+        elif base == 16:
+            return f'{str(integer)}.{str(floating_point)}\u2081\u2086'
+        else:
+            return f'{str(integer)}.{str(floating_point)}'
 
 def int_dec_to_other(decimal, base, integer = True):
     answer=[]
@@ -66,28 +81,27 @@ def int_dec_to_other(decimal, base, integer = True):
         if newvalue == 0:
             for x in answer:
                 digit = str(x)
-                if base == 16:
-                    if x>=10:
-                        if x == 10:
-                            digit = 'A'
-                        elif x == 11:
-                            digit = 'B'
-                        elif x == 12:
-                            digit = 'C'
-                        elif x == 13:
-                            digit = 'D'
-                        elif x == 14:
-                            digit = 'E'
-                        elif x == 15:
-                            digit = 'F'
+                if base == 16 and x>=10:
+                    if x == 10:
+                        digit = 'A'
+                    elif x == 11:
+                        digit = 'B'
+                    elif x == 12:
+                        digit = 'C'
+                    elif x == 13:
+                        digit = 'D'
+                    elif x == 14:
+                        digit = 'E'
+                    elif x == 15:
+                        digit = 'F'
                 answer_str = str(answer_str)+digit
             if integer:
                 if base == 2:
-                    answer_str = answer_str+u'\u2082'
+                    answer_str = answer_str+'\u2082'
                 elif base == 8:
-                    answer_str = answer_str+u'\u2088'
+                    answer_str = answer_str+'\u2088'
                 elif base == 16:
-                    answer_str = answer_str+u'\u2081\u2086'
+                    answer_str = answer_str+'\u2081\u2086'
                 return answer_str
             else:
                 return int(answer_str)
@@ -100,7 +114,7 @@ def float_dec_to_other(decimal, base, length):
     for _ in range(0, length+1):
         answer.insert(0, floor(decimal_iterator*base))
         decimal_iterator = (decimal_iterator*base)%1
-        print(f'{answer}, {decimal_iterator}')
+        # print(f'{answer}, {decimal_iterator}')
     for x in reversed(answer):
         digit = x
         if base == 16:
@@ -127,7 +141,7 @@ def other_to_decimal(other, base):
                 exit(0)
             answer+=digit*(base**counter)
             counter+=1
-        answer = str(answer)+u'\u2081\u2080'
+        answer = str(answer)+'\u2081\u2080'
         return answer
     elif base == 16:
         for x in list_other:
@@ -149,7 +163,7 @@ def other_to_decimal(other, base):
             answer+=digit*(16**counter)
             counter+=1
             # print(f'{answer}, {digit}, {counter}')
-        answer = str(answer)+u'\u2081\u2086'
+        answer = str(answer)+'\u2081\u2086'
         return answer
     elif base != 16 and base > 9:
         print('Sorry, this calculator does not work with that base.\nPlease try again with a base less than 10')
@@ -157,13 +171,13 @@ def other_to_decimal(other, base):
 
 
 if calc_choice.upper() == 'A':
-    print(f'Decimal: {decimal}\nBinary: {decimal_to_other(decimal, 2)}')
+    print(f'Decimal: {decimal}\nBinary: {decimal_to_other(decimal, 2, decimal_length)}')
 elif calc_choice.upper() == 'B':
-    print(f'Decimal: {decimal}\nOctal: {decimal_to_other(decimal, 8)}')
+    print(f'Decimal: {decimal}\nOctal: {decimal_to_other(decimal, 8, decimal_length)}')
 elif calc_choice.upper() == 'C':
-    print(f'Decimal: {decimal}\nHexadecimal: {decimal_to_other(decimal, 16)}')
+    print(f'Decimal: {decimal}\nHexadecimal: {decimal_to_other(decimal, 16, decimal_length)}')
 elif calc_choice.upper() == 'D':
-    print(f'Decimal: {decimal}\nBase {base}: {decimal_to_other(decimal, base)}')
+    print(f'Decimal: {decimal}\nBase {base}: {decimal_to_other(decimal, base, decimal_length)}')
 if calc_choice2 != None:
     if calc_choice2.upper() == 'A':
         print(f'Binary: {base_value}\nDecimal: {other_to_decimal(base_value, 2)}')

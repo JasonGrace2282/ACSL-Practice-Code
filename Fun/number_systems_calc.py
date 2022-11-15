@@ -128,7 +128,18 @@ def float_value(decimal, base, length):
 
 
 def other_to_decimal(other, base):
-    list_other = reversed(list(str(other)))
+    try:
+        int(other)
+    except ValueError:
+        input_list = str(other).split('.')
+        integer_aspect = int_value_decimal(input_list[0], base, False)
+        float_aspect = float_value_decimal(input_list[1], base)
+        return integer_aspect+float_aspect
+    else:
+        return int_value_decimal(other, base)
+
+def int_value_decimal(input, base, integer = True):
+    list_other = reversed(list(str(input)))
     counter = 0
     answer = 0
     digit = 0
@@ -141,7 +152,8 @@ def other_to_decimal(other, base):
                 exit(0)
             answer+=digit*(base**counter)
             counter+=1
-        answer = str(answer)+'\u2081\u2080'
+        if integer == True:
+            answer = str(answer)+'\u2081\u2080'
         return answer
     elif base == 16:
         for x in list_other:
@@ -163,12 +175,29 @@ def other_to_decimal(other, base):
             answer+=digit*(16**counter)
             counter+=1
             # print(f'{answer}, {digit}, {counter}')
-        answer = str(answer)+'\u2081\u2086'
+        if integer == True:
+            answer = str(answer)+'\u2081\u2086'
         return answer
     elif base != 16 and base > 9:
         print('Sorry, this calculator does not work with that base.\nPlease try again with a base less than 10')
         exit(0)
 
+def float_value_decimal(float_value, base):
+    total_sum = 0
+    letters = {'A': 10, 'B': 11, 'C': 12, 'D': 13, 'E': 14, 'F': 15}
+    float_list = list(float_value)
+    if base <=9:
+        for power, value in enumerate(float_list):
+            total_sum+=value*base**(-1*(power+1))
+    elif base == 16:
+        for index, values in enumerate(float_list):
+            if values in letters.keys:
+                for x in letters:
+                    if values == x:
+                        float_list[index]=letters.get(x)
+        for power, value in enumerate(float_list):
+            total_sum+=value*base**(-1*(power+1))
+    return total_sum
 
 if calc_choice.upper() == 'A':
     print(f'Decimal: {decimal}\nBinary: {decimal_to_other(decimal, 2, decimal_length)}')

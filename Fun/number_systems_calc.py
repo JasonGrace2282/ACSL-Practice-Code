@@ -1,17 +1,25 @@
-from math import floor
+def  text_and_input(text, type=int):
+    if type == int:
+        output = int((input(str(text))).split(str(text))[0])
+    elif type is None:
+        output = (input(str(text))).split(str(text))[0]
+    elif type == float:
+        output = float((input(str(text))).split(str(text))[0])
+    return output
 
 print('Welcome to the ACSL Contest 1 Calculator!\nPlease type the letter of which function you would like to use.\
     \nA)Decimal to Binary\nB)Decimal to Octal\nC)Decimal to Hexadecimal\nD)Decimal to Custom Base\nE)Other bases to Decimal')
-calc_choice = (input('Choose: ')).split('Choose: ')[0]
+calc_choice = text_and_input('Choose: ', None)
 print(f'You have chosen letter {calc_choice.upper()}')
 
 if calc_choice.upper() not in ['D', 'E'] and calc_choice.upper() in ['A', 'B', 'C']:
-    decimal = (input('Input your decimal number: ')).split('Input your decimal number: ')[0]
+    decimal = text_and_input('Input your decimal number: ', None)
     try:
         int(decimal)
     except ValueError:
         print('How many values after the decimal point should we calculate to? ')
-        decimal_length = (int((input('Decimal places: ')).split('Decimal places: ')[0]))-1
+        decimal_length = text_and_input('Decimal places: ')
+        rounding_value = decimal_length-1
     else:
         decimal_length = 5
     try:
@@ -22,25 +30,25 @@ if calc_choice.upper() not in ['D', 'E'] and calc_choice.upper() in ['A', 'B', '
 
 elif calc_choice.upper() == 'D':
     print('WARNING: This calculator does not work with custom bases greater than 9 or less than 1')
-    base = int((input('Base: ')).split('Base: ')[0])
-    decimal = float((input('Input your decimal number: ')).split('Input your decimal number: ')[0])
+    base = text_and_input('Base: ')
+    decimal = text_and_input('Input your decimal number: ', float)
     calc_choice2 = None
 
 elif calc_choice.upper() == 'E':
     print('Welcome to the convert to decimal calculator. \nPlease type the letter of the option you would like to choose\
         \nA)Binary to Decimal\nB)Octal to Decimal\nC)Hexadecimal to Decimal\nD)Custom base to Decimal')
-    calc_choice2 = (input('Choose: ')).split('Choose: ')[0]
+    calc_choice2 = text_and_input('Choose: ', None)
     print(f'You have chosen letter {calc_choice2.upper()}')
 
     if calc_choice2.upper() == 'A':
-        base_value = int((input('Input your Binary number: ')).split('Input your Binary number: ')[0])
+        base_value = text_and_input('Input your Binary number: ')
     elif calc_choice2.upper() == 'B':
-        base_value = int((input('Input your Octal number: ')).split('Input your Octal number: ')[0])
+        base_value = text_and_input('Input your Octal number: ')
     elif calc_choice2.upper() == 'C':
-        base_value = (input('Input your Hexadecimal number: ')).split('Input your Hexadecimal number: ')[0]
+        base_value = text_and_input('Input your Hexadecimal number: ', None)
     elif calc_choice2.upper() == 'D':
         print('WARNING: This calculator does not work with custom bases greater than 9 or less than 1')
-        base2 = int((input('Base: ')).split('Base: ')[0])
+        base2 = text_and_input('Base: ')
         base_value = int((input(f'Input your Base {base2} number: ')).split(f'Input your Base {base2} number: ')[0])
 
 def decimal_to_other(decimal, base, length):
@@ -111,8 +119,8 @@ def float_value(decimal, base, length):
     answer_str=''
     letters = ['A', 'B', 'C', 'D', 'E', 'F']
     decimal_iterator = decimal*10**(-1*len(str(decimal)))
-    for _ in range(0, length+1):
-        answer.insert(0, floor(decimal_iterator*base))
+    for numbers in range(length):
+        answer.insert(0, int(decimal_iterator*base))
         decimal_iterator = (decimal_iterator*base)%1
         # print(f'{answer}, {decimal_iterator}')
     for x in reversed(answer):

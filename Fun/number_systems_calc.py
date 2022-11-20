@@ -71,7 +71,7 @@ def decimal_to_other(decimal, base, length):
         else:
             return f'{str(integer)}.{str(floating_point)}'
 
-def int_value(decimal, base, integer = True):
+def int_value(decimal, base, add_base = True):
     answer=[]
     answer_str=''
     counter = 0
@@ -103,7 +103,7 @@ def int_value(decimal, base, integer = True):
                     elif x == 15:
                         digit = 'F'
                 answer_str = str(answer_str)+digit
-            if integer:
+            if add_base:
                 if base == 2:
                     answer_str = answer_str+'\u2082'
                 elif base == 8:

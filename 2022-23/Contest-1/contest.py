@@ -3,6 +3,7 @@ def list_val(lists, val):
     return int(list(str(lists))[val])
 
 def list_sum(list: list):
+    '''Sums up the values inside of a list with list elements'''
     sum = 0
     for x in list:
         for y in x:

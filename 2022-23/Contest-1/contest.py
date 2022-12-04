@@ -11,7 +11,6 @@ def list_sum(list: list):
 
 def findDigitSum(num, base, start):
     numbers = []
-    digit_sum = 0
 
     if start < 10:
         counter = start-1

@@ -317,7 +317,7 @@ def findDigitSum(num, base, start):
         ten_quadrillions = 0
         hundred_quadrillions = 0
 
-    for executions in range(num):
+    for _ in range(num):
         counter+=1
         if counter>=base:
             tens+=1
@@ -375,4 +375,4 @@ def findDigitSum(num, base, start):
 
     return list_sum(numbers)
 
-print(f'ans: {findDigitSum(15, 8, 2)}')
+print(findDigitSum(15, 8, 2))

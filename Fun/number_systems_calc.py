@@ -51,7 +51,7 @@ elif calc_choice.upper() == 'E':
         base2 = text_and_input('Base: ')
         base_value = int((input(f'Input your Base {base2} number: ')).split(f'Input your Base {base2} number: ')[0])
 
-def decimal_to_other(decimal, base, length):
+def decimal_to_other(decimal, base:int, length):
     decimal_copy = float(decimal)
     if float(decimal)%1 == 0:
         return int_value(decimal, base)
@@ -71,7 +71,7 @@ def decimal_to_other(decimal, base, length):
         else:
             return f'{str(integer)}.{str(floating_point)}'
 
-def int_value(decimal, base, add_base = True):
+def int_value(decimal, base: int, add_base = True):
     answer=[]
     answer_str=''
     counter = 0
@@ -114,28 +114,27 @@ def int_value(decimal, base, add_base = True):
             else:
                 return int(answer_str)
 
-def float_value(decimal, base, length):
+def float_value(decimal, base:int, length: int):
     answer=[]
     answer_str=''
     letters = ['A', 'B', 'C', 'D', 'E', 'F']
     decimal_iterator = decimal*10**(-1*len(str(decimal)))
-    for numbers in range(length):
+    for _ in range(length):
         answer.insert(0, int(decimal_iterator*base))
         decimal_iterator = (decimal_iterator*base)%1
         # print(f'{answer}, {decimal_iterator}')
     for x in reversed(answer):
         digit = x
-        if base == 16:
-            if digit >=10:
-                for number in range(10, 16):
-                    index = number-10
-                    if digit == number:
-                        digit=letters[index]
+        if base == 16 and digit >=10:
+            for number in range(10, 16):
+                index = number-10
+                if digit == number:
+                    digit=letters[index]
         answer_str = str(answer_str)+str(digit)
     return answer_str
 
 
-def other_to_decimal(other, base):
+def other_to_decimal(other, base: int):
     try:
         int(other)
     except ValueError:

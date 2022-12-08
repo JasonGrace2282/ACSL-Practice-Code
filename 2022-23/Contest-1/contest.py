@@ -1,6 +1,6 @@
-def list_val(lists, val):
+def list_val(lists, val, add=0):
     '''Returns digit at place value. Digit location counted from left to right'''
-    return int(list(str(lists))[val])
+    return int(list(str(lists))[val])+add
 
 def list_sum(list: list):
     '''Sums up the values inside of a list with list elements'''
@@ -33,7 +33,7 @@ def findDigitSum(num, base, start):
         ten_quadrillions = 0
         hundred_quadrillions = 0
     elif 100 > start >= 10:
-        counter = list_val(start, -1)-1
+        counter = list_val(start, -1, -1)
         tens = list_val(start, 0)
         thousands = 0
         hundreds = 0
@@ -52,7 +52,7 @@ def findDigitSum(num, base, start):
         ten_quadrillions = 0
         hundred_quadrillions = 0
     elif 1000 > start >= 100:
-        counter = list_val(start, -1)-1
+        counter = list_val(start, -1, -1)
         tens = list_val(start, 1)
         hundreds = list_val(start, 0)
         thousands = 0
@@ -71,7 +71,7 @@ def findDigitSum(num, base, start):
         ten_quadrillions = 0
         hundred_quadrillions = 0
     elif 10_000 > start >= 1000:
-        counter = list_val(start, -1)-1
+        counter = list_val(start, -1, -1)
         tens = list_val(start, 2)
         hundreds = list_val(start, 1)
         thousands = list_val(start, 0)
@@ -90,7 +90,7 @@ def findDigitSum(num, base, start):
         ten_quadrillions = 0
         hundred_quadrillions = 0
     elif 100_000 > start >= 10_000:
-        counter = list_val(start, -1)-1
+        counter = list_val(start, -1, -1)
         tens = list_val(start, 3)
         hundreds = list_val(start, 2)
         thousands = list_val(start, 1)
@@ -109,7 +109,7 @@ def findDigitSum(num, base, start):
         ten_quadrillions = 0
         hundred_quadrillions = 0
     elif 1_000_000 > start >= 100_000:
-        counter = list_val(start, -1)-1
+        counter = list_val(start, -1, -1)
         tens = list_val(start, 4)
         hundreds = list_val(start, 3)
         thousands = list_val(start, 2)
@@ -128,7 +128,7 @@ def findDigitSum(num, base, start):
         ten_quadrillions = 0
         hundred_quadrillions = 0
     elif 10_000_000 > start >= 1_000_000:
-        counter = list_val(start, -1)-1
+        counter = list_val(start, -1, -1)
         tens = list_val(start, 5)
         hundreds = list_val(start, 4)
         thousands = list_val(start, 3)
@@ -147,7 +147,7 @@ def findDigitSum(num, base, start):
         ten_quadrillions = 0
         hundred_quadrillions = 0
     elif 100_000_000 > start >= 10_000_000:
-        counter = list_val(start, -1)-1
+        counter = list_val(start, -1, -1)
         tens = list_val(start, 6)
         hundreds = list_val(start, 5)
         thousands = list_val(start, 4)
@@ -166,7 +166,7 @@ def findDigitSum(num, base, start):
         ten_quadrillions = 0
         hundred_quadrillions = 0
     elif 1_000_000_000 > start >= 100_000_000:
-        counter = list_val(start, -1)-1
+        counter = list_val(start, -1, -1)
         tens = list_val(start, 7)
         hundreds = list_val(start, 6)
         thousands = list_val(start, 5)
@@ -185,7 +185,7 @@ def findDigitSum(num, base, start):
         ten_quadrillions = 0
         hundred_quadrillions = 0
     elif 10_000_000_000 > start >= 100_000_000:
-        counter = list_val(start, -1)-1
+        counter = list_val(start, -1, -1)
         tens = list_val(start, 8)
         hundreds = list_val(start, 7)
         thousands = list_val(start, 6)
@@ -204,7 +204,7 @@ def findDigitSum(num, base, start):
         ten_quadrillions = 0
         hundred_quadrillions = 0
     elif 100_000_000_000 > start >= 1_000_000_000:
-        counter = list_val(start, -1)-1
+        counter = list_val(start, -1, -1)
         tens = list_val(start, 9)
         hundreds = list_val(start, 8)
         thousands = list_val(start, 7)
@@ -223,7 +223,7 @@ def findDigitSum(num, base, start):
         ten_quadrillions = 0
         hundred_quadrillions = 0
     elif 1_000_000_000_000 > start >= 10_000_000_000:
-        counter = list_val(start, -1)-1
+        counter = list_val(start, -1, -1)
         tens = list_val(start, 10)
         hundreds = list_val(start, 9)
         thousands = list_val(start, 8)
@@ -242,7 +242,7 @@ def findDigitSum(num, base, start):
         ten_quadrillions = 0
         hundred_quadrillions = 0
     elif 10_000_000_000_000 > start >= 100_000_000_000:
-        counter = list_val(start, -1)-1
+        counter = list_val(start, -1, -1)
         tens = list_val(start, 11)
         hundreds = list_val(start, 10)
         thousands = list_val(start, 9)
@@ -261,7 +261,7 @@ def findDigitSum(num, base, start):
         ten_quadrillions = 0
         hundred_quadrillions = 0
     elif 100_000_000_000_000 > start >= 1_000_000_000_000:
-        counter = list_val(start, -1)-1
+        counter = list_val(start, -1, -1)
         tens = list_val(start, 12)
         hundreds = list_val(start, 11)
         thousands = list_val(start, 10)
@@ -280,7 +280,7 @@ def findDigitSum(num, base, start):
         ten_quadrillions = 0
         hundred_quadrillions = 0
     elif 1_000_000_000_000_000 > start >= 10_000_000_000_000:
-        counter = list_val(start, -1)-1
+        counter = list_val(start, -1, -1)
         tens = list_val(start, 13)
         hundreds = list_val(start, 12)
         thousands = list_val(start, 11)
@@ -299,7 +299,7 @@ def findDigitSum(num, base, start):
         ten_quadrillions = 0
         hundred_quadrillions = 0
     else:
-        counter = list_val(start, -1)-1
+        counter = list_val(start, -1, -1)
         tens = list_val(start, 14)
         hundreds = list_val(start, 13)
         thousands = list_val(start, 12)

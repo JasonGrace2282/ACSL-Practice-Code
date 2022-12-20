@@ -11,8 +11,7 @@ def operation(N, P, D):
     num = [int(x) for x in reverse(N)]
 
     if 0<=pos_val(N, P, False)<=4:
-        num[P-1]+=D
-        num[P-1]=pos_val(num[P-1], 0)
+        num[P-1]=pos_val(num[P-1]+D, 0)
         num.reverse()
 
         for idx in range(len(num)-P+1, len(num)):
@@ -20,8 +19,7 @@ def operation(N, P, D):
 
         return int(''.join([str(x) for x in num]))
     elif 5<=pos_val(N, P, False)<=9:
-        num[P-1]-=D
-        num[P-1]=pos_val(abs(num[P-1]), 1)
+        num[P-1]=pos_val(abs(num[P-1]-D), 1)
         num.reverse()
 
         for idx in range(len(num)-P+1, len(num)):

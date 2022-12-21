@@ -67,6 +67,6 @@ def execute():
         exit(0)
     else:
         print('Sorry, I didn\'t understand that')
-        execute()
+        return execute()
 
 print(execute())

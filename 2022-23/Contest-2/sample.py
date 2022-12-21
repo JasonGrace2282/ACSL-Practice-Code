@@ -52,17 +52,20 @@ def longest_word(sentence: str):
     return longest_word
 
 def code(sentence: str):
-    '''Formats output'''
+    '''Formats output. 1. Unique Letters, 2. Vowels, 3. Uppercase Letters, 4. Most Common Letter's Frequency, and 5. Longest Word'''
     uppercase = sentence.upper()
     return f'1. {unique_letters(uppercase)}\n2. {vowels(uppercase)}\n3. {uppercase_letters(sentence)}\n4. {frequency(uppercase)}\n5. {longest_word(sentence)}'
 
 def execute():
-    print('Please type either \'Sample\' or \'Test\', or type \'Quit\'.')
+    print('Please type either \'Sample\' or \'Test\', \'Custom\', or type \'Quit\'.')
     answer = input().upper()
     if answer == 'SAMPLE':
         return code('The quick brown fox, named Roxanne, jumped over Bruno, a lazy dog.')
     elif answer == 'TEST':
         return code('The 2019 All-Star Competition is at Wayne Hills HS in Wayne, New Jersey.')
+    elif answer == 'CUSTOM':
+        print('Please type your sentence.')
+        return code(input())
     elif answer == 'QUIT':
         exit(0)
     else:

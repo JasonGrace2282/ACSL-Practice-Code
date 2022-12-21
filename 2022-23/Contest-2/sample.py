@@ -57,7 +57,7 @@ def code(sentence: str):
     return f'1. {unique_letters(uppercase)}\n2. {vowels(uppercase)}\n3. {uppercase_letters(sentence)}\n4. {frequency(uppercase)}\n5. {longest_word(sentence)}'
 
 def execute():
-    print('Please type either \'Sample\' or \'Test\', \'Custom\', or type \'Quit\'.')
+    print('Please type \'Sample\', \'Test\', \'Custom\', or \'Quit\'.')
     answer = input().upper()
     if answer == 'SAMPLE':
         return code('The quick brown fox, named Roxanne, jumped over Bruno, a lazy dog.')

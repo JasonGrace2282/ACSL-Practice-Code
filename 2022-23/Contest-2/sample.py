@@ -56,9 +56,17 @@ def code(sentence: str):
     uppercase = sentence.upper()
     return f'1. {unique_letters(uppercase)}\n2. {vowels(uppercase)}\n3. {uppercase_letters(sentence)}\n4. {frequency(uppercase)}\n5. {longest_word(sentence)}'
 
-print('Please type either \'Sample\' or \'Test\'')
-answer = input().upper()
-if answer == 'SAMPLE':
-    print(code('The quick brown fox, named Roxanne, jumped over Bruno, a lazy dog.'))
-elif answer == 'TEST':
-    print(code('The 2019 All-Star Competition is at Wayne Hills HS in Wayne, New Jersey.'))
+def execute():
+    print('Please type either \'Sample\' or \'Test\', or type \'Quit\'.')
+    answer = input().upper()
+    if answer == 'SAMPLE':
+        return code('The quick brown fox, named Roxanne, jumped over Bruno, a lazy dog.')
+    elif answer == 'TEST':
+        return code('The 2019 All-Star Competition is at Wayne Hills HS in Wayne, New Jersey.')
+    elif answer == 'QUIT':
+        exit(0)
+    else:
+        print('Sorry, I didn\'t understand that')
+        execute()
+
+print(execute())

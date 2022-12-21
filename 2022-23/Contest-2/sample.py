@@ -1,4 +1,4 @@
-def remove_punc(words):
+def remove_punc(words: list):
     '''Removes punctuation from strings inside list. Returns updated list'''
     punctuation = '~!@#$%^&*()`\';:"<>,.?/\\_+-={}[]'
     for position, string in enumerate(words):

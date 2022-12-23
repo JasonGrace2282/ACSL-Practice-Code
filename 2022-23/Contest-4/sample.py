@@ -1,7 +1,7 @@
 def count(N: int, string: str):
     array = []
     letters = []
-    alphabet = [chr(lttr) for lttr in range(ord('A'), ord('Z'))]
+    alphabet = [chr(lttr) for lttr in range(ord('A'), ord('Z')+1)]
     for char in string:
         if char.upper() in alphabet:
             try:

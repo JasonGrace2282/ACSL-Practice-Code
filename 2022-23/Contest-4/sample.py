@@ -1,4 +1,5 @@
 def count(N: int, string: str):
+    '''Returns the length of the number of different letters that have occupied the Nth position of the array after being sorted.'''
     array = []
     letters = []
     alphabet = [chr(lttr) for lttr in range(ord('A'), ord('Z')+1)]
@@ -10,7 +11,7 @@ def count(N: int, string: str):
                 letters.append(array[N-1])
             except IndexError:
                 pass
-    return len(list(set(letters)))
+    return len(list(set(letters))) # Removes repetitive letters and takes length.
 
 def run():
     print('Please type PRACTICE, TEST, or QUIT to proceed.')

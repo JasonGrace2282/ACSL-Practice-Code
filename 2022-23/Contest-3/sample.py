@@ -91,7 +91,7 @@ def smart_logic(array):
     matrix = array
     for indx1 in range(3):
         for indx2 in range(3):
-            if array[indx1][indx2]=='':
+            if not array[indx1][indx2]:
                 options_dict = check_options(array[indx1], array[:, indx2])
                 for lettr in options_dict.get('row'):
                     if lettr in options_dict.get('column'):
@@ -153,12 +153,12 @@ def run():
             print(code(4, '1, A, 2, B, 8, A. 9, B'))
         elif number == 2:
             # Doesn't work
-            print(code(3, '1, A, 2, B, 9, A'))
+            print(code(3, '1, A, 2, B, 9, A'), code(3, '1, A, 2, B, 9, A')=='ABCCABBCA')
         elif number == 3:
             print(code(3, '3, C, 6, B, 7, C'))
         elif number == 4:
             print(code(2, '7, A, 6, C'))
         elif number == 5:
             # Doesn't work
-            print(code(2, '1, C, 6, A'))
+            print(code(2, '1, C, 6, A'), code(2, '1, C, 6, A')=='CABBCAABC')
 run()
